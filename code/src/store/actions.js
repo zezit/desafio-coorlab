@@ -15,3 +15,7 @@ export const fetchData = ({ commit }) => {
             console.error(error);
         });
 }
+
+export const findOptions = ({ commit }, destine) => {
+    commit('SET_SELECTED_DESTINE', destine);
+}

@@ -2,19 +2,31 @@
   <main>
     <app-header :appName="appName" />
 
-    <section class="app-body">
-      <b-container fluid class="bv-example-row cards-container">
-        <b-row>
-          <b-col class="search-container container" :sm="12" :md="6" :lg="6" :xl="6">
-            <search-section></search-section>
-          </b-col>
+    <div class="content">
 
-          <b-col class="options-container container" :sm="12" :md="6" :lg="6" :xl="6">
-            <shipment-options></shipment-options>
-          </b-col>
-        </b-row>
-      </b-container>
-    </section>
+      <b-modal ref="showErrorModal" hide-footer title="Using Component Methods">
+        <div class="d-block text-center">
+          <h3>Hello From My Modal!</h3>
+        </div>
+        <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
+      </b-modal>
+
+      <section class="app-body">
+        <b-container fluid class="bv-example-row cards-container">
+          <b-row>
+            <b-col class="search-container container" :sm="12" :md="4" :lg="4" :xl="4">
+              <search-section></search-section>
+            </b-col>
+
+            <b-col class="options-container container" :sm="12" :md="6" :lg="6" :xl="6">
+              <shipment-options></shipment-options>
+            </b-col>
+          </b-row>
+        </b-container>
+      </section>
+
+    </div>
+
   </main>
 </template>
 
@@ -55,7 +67,7 @@ export default {
 }
 
 .container {
-  min-height: 450px;
+  min-height: 500px;
   height: 100%;
 }
 

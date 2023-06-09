@@ -4,7 +4,8 @@
             <b-card bg-variant="light" class="container">
             </b-card>
         </div>
-        <div>
+
+        <div v-else>
             <div class="container">
                 <div>
                     <h4>Nenhum dado selecionado</h4>
@@ -17,12 +18,6 @@
 
 <script>
 export default ({
-    data() {
-        return {
-
-        }
-    },
-
     computed: {
         selectedDestineOptions() {
             return this.$store.state.selectedDestineOptions;
