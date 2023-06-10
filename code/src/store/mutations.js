@@ -68,5 +68,6 @@ export default {
         state.selectedDestine = [];
         state.errorModal = null;
         state.loadingState = false;
+        state.clear = !state.clear
     }
 }

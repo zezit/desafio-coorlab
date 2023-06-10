@@ -156,7 +156,7 @@ export default {
     font-weight: 700;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .cards-container {
         flex-direction: column;
     }

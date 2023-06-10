@@ -7,5 +7,8 @@ export default {
     },
     showErrorModal(state) {
         return state.errorModal;
+    },
+    getClear(state) {
+        return state.clear;
     }
 }

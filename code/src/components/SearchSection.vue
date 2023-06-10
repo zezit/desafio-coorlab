@@ -15,7 +15,7 @@
 
         <b-form-group>
             <b-form-group class="form-label">
-                <p class="h4 mb-2 font-weight-bold pt-0" name="label" align-sm="center">
+                <p class="h5 mb-2 font-weight-bold pt-0" name="label" align-sm="center">
                     <b-icon icon="map" class="map-icon"></b-icon>Insira o destino e o peso
                 </p>
             </b-form-group>
@@ -63,7 +63,8 @@ export default ({
 
     computed: {
         ...mapGetters({
-            loadingState: 'loadingState'
+            loadingState: 'loadingState',
+            getClear: 'getClear'
         }),
 
         // returns the city options from the store data in alhabetic order
@@ -83,9 +84,15 @@ export default ({
         }
     },
 
+    watch: {
+        getClear() {
+            this.pesoInput = null;
+            this.destinoInput = null;
+        }
+    },
+
     methods: {
         findOptions() {
-            this.$store.dispatch('clearAll');
             this.$store.dispatch('showLoading');
 
             if (this.destinoInput && this.pesoInput) {
@@ -131,7 +138,7 @@ export default ({
 }
 
 .form-label {
-    margin-bottom: 40px;
+    margin: 50px 0;
 }
 
 .button-container {

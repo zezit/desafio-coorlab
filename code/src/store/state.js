@@ -3,4 +3,5 @@ export default {
     selectedDestine: [],
     errorModal: null,
     loadingState: false,
+    clear: false,
 }

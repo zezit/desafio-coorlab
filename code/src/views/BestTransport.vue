@@ -6,11 +6,11 @@
       <section class="app-body">
         <b-container fluid class="bv-example-row cards-container">
           <b-row>
-            <b-col class="search-container container" :sm="12" :md="4" :lg="4" :xl="4">
+            <b-col class="search-container container" :sm="12" :md="12" :lg="4" :xl="4">
               <search-section></search-section>
             </b-col>
 
-            <b-col class="options-container container" :sm="12" :md="6" :lg="8" :xl="8">
+            <b-col class="options-container container" :sm="12" :md="12" :lg="8" :xl="8">
               <shipment-options></shipment-options>
             </b-col>
           </b-row>
@@ -57,11 +57,6 @@ export default {
 </script>
 
 <style scoped>
-
-.container {
-  padding: 20px 10px;
-}
-
 .app-body,
 .cards-container {
   height: 100%;
@@ -70,6 +65,7 @@ export default {
 .container {
   min-height: 500px;
   height: 100%;
+  padding: 20px 10px;
 }
 
 .button-container {

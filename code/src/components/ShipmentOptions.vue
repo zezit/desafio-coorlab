@@ -1,9 +1,10 @@
 <template>
-    <div class="container">
-        <div class="cards" v-if="selectedDestineOptions.length">
+    <transition name="show">
+        <div class="cards" v-if="selectedDestineOptions.length" key="save">
             <div>
                 <h5>Estas são as melhores alternativas de frete que encontramos para você.</h5>
             </div>
+
             <card-layout cardType="first-row" :optionDetail="selectedDestineOptions[0]" />
             <card-layout cardType="second-row" :optionDetail="selectedDestineOptions[1]" />
 
@@ -13,12 +14,12 @@
             </div>
         </div>
 
-        <div v-else>
+        <div v-else class="container">
             <div class="no-data-container">
                 <h4>Nenhum dado selecionado</h4>
             </div>
         </div>
-    </div>
+    </transition>
 </template>
   
 
@@ -42,7 +43,6 @@ export default ({
 
     methods: {
         clearAll() {
-            this.$emit('reset-inputs');
             this.$store.dispatch('clearAll');
         }
     }
@@ -50,16 +50,18 @@ export default ({
 
 </script>
 <style scoped>
-
-.cards{
-    /* width: 90%; */
+.cards {
+    width: 96%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 500px;
+    height: 100%;
 }
+
 .container {
-    width: 100%;
-    min-height: 450px;
+    width: 96%;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +82,29 @@ h5 {
     margin-top: 20px;
 }
 
+/* transition */
+.show-enter-active,
+.show-leave-active {
+    animation: enter 0.2s;
+}
+
+.show-enter,
+.show-leave-to {
+    animation: enter 0.2s reverse;
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+    }
+}
+
 @media (max-width: 768px) {
+    .clear-button-container {
+        display: flex;
+        justify-content: center;
+    }
+
     h5 {
         width: 100%;
     }
