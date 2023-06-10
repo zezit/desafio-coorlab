@@ -1,7 +1,11 @@
-export const selectedDestineOptions = (state) => {
-    if (state.selectedDestine === null) {
-        return [];
-    } else {
-        return state.data.filter((item) => item.city === state.selectedDestine);
+export default {
+    selectedDestine(state) {
+        return state.selectedDestine.length > 0 ? state.selectedDestine : [];
+    },
+    loadingState(state) {
+        return state.loadingState;
+    },
+    showErrorModal(state) {
+        return state.errorModal;
     }
 }

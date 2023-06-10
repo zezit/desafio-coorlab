@@ -1,5 +1,18 @@
 <template>
     <b-card bg-variant="light" class="container">
+        <b-modal v-model="showModalFlag" centered hide-footer hide-header backdrop content-class="shadow"
+            class="custom-modal">
+            <div class="warning-container">
+                <img src="../assets/icons8-warning-100.png" alt="warning" />
+            </div>
+            <div class="d-block text-center error-message">
+                <p>{{ errorModal }}</p>
+            </div>
+            <div class="button-container">
+                <layout-button :click="hideModal" text="Fechar" :disabled="false"></layout-button>
+            </div>
+        </b-modal>
+
         <b-form-group>
             <b-form-group class="form-label">
                 <p class="h4 mb-2 font-weight-bold pt-0" name="label" align-sm="center">
@@ -7,8 +20,8 @@
                 </p>
             </b-form-group>
 
-            <b-form-group label="Destino" label-for="destino" label-cols-sm="3" label-align-sm="right">
-                <b-form-select id="destino" v-model="destinoInput" :options="destinoOptions"
+            <b-form-group label="Destino" label-for="destino" label-cols-sm="5" label-align-sm="right">
+                <b-form-select ref="destinoInputRef" id="destino" v-model="destinoInput" :options="destinoOptions"
                     class="mb-2 mr-sm-2 mb-sm-0 form-control select-options" size="lg">
                     <template #first>
                         <b-form-select-option :value="null" disabled>Selecione o Destino</b-form-select-option>
@@ -16,33 +29,43 @@
                 </b-form-select>
             </b-form-group>
 
-            <b-form-group label="Peso" label-for="peso" label-cols-sm="3" label-align-sm="right">
-                <b-form-input id="peso" v-model.number="pesoInput" type="number"
+            <b-form-group label="Peso" label-for="peso" label-cols-sm="5" label-align-sm="right">
+                <b-form-input ref="pesoInputRef" id="peso" v-model.number="pesoInput" type="number"
                     placeholder="Peso da carga em kg"></b-form-input>
             </b-form-group>
 
-            <b-col lg="4" class="pb-2 analyze-button-container">
-                <b-button @click="findOptions" class="text-center analyze-button" :disabled="loadingState">
-                    Analisar
-                    <b-spinner v-if="loadingState" small class="spinner"></b-spinner>
-                </b-button>
+            <b-col lg="4" sm="6" class="pb-2 analyze-button-container">
+                <layout-button v-b-modal.error-modal :click="findOptions" :disabled="loadingState"
+                    text="Analisar"></layout-button>
             </b-col>
         </b-form-group>
     </b-card>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
+import LayoutButton from '@/components/LayoutButton.vue';
+
 export default ({
+    components: {
+        LayoutButton,
+    },
+
     data() {
         return {
             pesoInput: null,
             destinoInput: null,
-            loadingState: false,
-            showFieldsErrorMessage: false
+            showModalFlag: false,
+            errorModal: "",
         }
     },
 
     computed: {
+        ...mapGetters({
+            loadingState: 'loadingState'
+        }),
+
         // returns the city options from the store data in alhabetic order
         destinoOptions() {
             return this.$store.state.data.map((item) => {
@@ -57,26 +80,34 @@ export default ({
                     return t.text === item.text;
                 });
             });
-        },
+        }
     },
 
     methods: {
         findOptions() {
-            this.loadingState = true;
+            this.$store.dispatch('clearAll');
+            this.$store.dispatch('showLoading');
 
             if (this.destinoInput && this.pesoInput) {
                 this.$store.dispatch('findOptions', {
                     destino: this.destinoInput,
                     peso: this.pesoInput,
-                });
+                })
                 return
             }
 
-            this.loadingState = false;
+            this.showModal();
+            this.$store.dispatch('hideLoading');
         },
-        
+
+        showModal() {
+            this.showModalFlag = true;
+            this.errorModal = `Insira os valores para realizar\na análise.`;
+        },
+
         hideModal() {
-            this.$refs['my-modal'].hide()
+            this.showModalFlag = false;
+            this.errorModal = "";
         },
     },
 })
@@ -95,26 +126,41 @@ export default ({
     justify-content: center;
 }
 
-.analyze-button-container .spinner {
-    margin-left: 10px;
-}
-
-.analyze-button-container button {
-    width: 150px;
-    max-width: 50%;
-    background-color: var(--main-backgroung-color);
-    color: var(--main-text-color);
-    font-weight: 500;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-}
-
 .placeholder-option {
     color: #999999;
 }
 
 .form-label {
     margin-bottom: 40px;
+}
+
+.button-container {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.warning-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.warning-container img {
+    width: 60px;
+}
+
+.error-message {
+    font-weight: 600;
+    font-size: larger;
+}
+
+.error-message p {
+    padding: 0 18%;
 }
 </style>

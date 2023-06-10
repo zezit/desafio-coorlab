@@ -1,5 +1,6 @@
 export default {
     data: [],
-    selectedDestine: null,
-    selectedDestineOptions: null
+    selectedDestine: [],
+    errorModal: null,
+    loadingState: false,
 }

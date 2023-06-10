@@ -3,14 +3,6 @@
     <app-header :appName="appName" />
 
     <div class="content">
-
-      <b-modal ref="showErrorModal" hide-footer title="Using Component Methods">
-        <div class="d-block text-center">
-          <h3>Hello From My Modal!</h3>
-        </div>
-        <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
-      </b-modal>
-
       <section class="app-body">
         <b-container fluid class="bv-example-row cards-container">
           <b-row>
@@ -18,7 +10,7 @@
               <search-section></search-section>
             </b-col>
 
-            <b-col class="options-container container" :sm="12" :md="6" :lg="6" :xl="6">
+            <b-col class="options-container container" :sm="12" :md="6" :lg="8" :xl="8">
               <shipment-options></shipment-options>
             </b-col>
           </b-row>
@@ -31,6 +23,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import AppHeader from '@/components/AppHeader.vue'
 import SearchSection from '@/components/SearchSection.vue'
 import ShipmentOptions from '@/components/ShipmentOptions.vue'
@@ -49,14 +43,21 @@ export default {
     }
   },
 
-  created() {
+  computed: {
+    ...mapGetters({
+      showErrorModal: 'showErrorModal'
+    }),
+  },
+
+  async created() {
     // loads city options from API
-    this.$store.dispatch('fetchData');
+    await this.$store.dispatch('fetchData');
   },
 }
 </script>
 
 <style scoped>
+
 .container {
   padding: 20px 10px;
 }
@@ -69,6 +70,14 @@ export default {
 .container {
   min-height: 500px;
   height: 100%;
+}
+
+.button-container {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

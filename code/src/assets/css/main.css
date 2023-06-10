@@ -3,8 +3,15 @@
 body {
     font-family: Montserrat, sans-serif;
     --grey-background: #f5f5f5;
-    --main-backgroung-color: #00aca6;
+    --main-backgroung-color: #90b4cd;
+    --main-backgroung-color-light: #bad4d9;
+    /* --main-backgroung-color: #00aca6; */
+    /* --main-backgroung-color-light: #5dbbb8; */
     --main-text-dark-color: #333333;
+    --dark-grey-background-card: #dddddb;
+    --light-grey-background-card: #f4f4f3;
+    --light-blue-card: #bad4d9;
+    --dark-blue-card: #90b4cd;
 }
 
 h1 {
