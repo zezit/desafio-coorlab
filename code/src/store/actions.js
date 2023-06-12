@@ -3,8 +3,7 @@ import axios from "axios";
 export default {
 	async fetchData({ commit }) {
 		await axios
-			.get(`${process.env.VUE_APP_ROOT_API}/transport`, {
-				// .get(`https://json-server-vercel-ten-psi.vercel.app/transport`, {
+			.get(`https://json-server-vercel-ten-psi.vercel.app/transport`, {
 				headers: {
 					Accept: "application/json",
 					"Content-Type": "application/json",
