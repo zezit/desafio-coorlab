@@ -1,6 +1,7 @@
 export default {
     SET_DATA(state, data) {
         state.data = data;
+        state.loadingData = false;
     },
 
     SET_SELECTED_DESTINE(state, packet) {

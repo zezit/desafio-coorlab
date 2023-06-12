@@ -12,6 +12,8 @@ body {
     --light-grey-background-card: #f4f4f3;
     --light-blue-card: #bad4d9;
     --dark-blue-card: #90b4cd;
+
+    min-height: 100vh;
 }
 
 h1 {
@@ -19,6 +21,6 @@ h1 {
     font-size: 20px;
 }
 
-full-height{
+full-height {
     height: 100%;
 }

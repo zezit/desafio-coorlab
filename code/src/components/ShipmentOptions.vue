@@ -85,12 +85,12 @@ h5 {
 /* transition */
 .show-enter-active,
 .show-leave-active {
-    animation: enter 0.2s;
+    animation: enter 0.25s ease-in-out;
 }
 
 .show-enter,
 .show-leave-to {
-    animation: enter 0.2s reverse;
+    animation: enter 0.25s reverse;
 }
 
 @keyframes enter {

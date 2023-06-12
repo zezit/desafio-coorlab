@@ -4,4 +4,5 @@ export default {
     errorModal: null,
     loadingState: false,
     clear: false,
+    loadingData: true
 }

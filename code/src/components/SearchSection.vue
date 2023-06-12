@@ -14,28 +14,32 @@
         </b-modal>
 
         <b-form-group>
+            <!-- title -->
             <b-form-group class="form-label">
                 <p class="h5 mb-2 font-weight-bold pt-0" name="label" align-sm="center">
                     <b-icon icon="map" class="map-icon"></b-icon>Insira o destino e o peso
                 </p>
             </b-form-group>
 
+            <!-- select -->
             <b-form-group label="Destino" label-for="destino" label-cols-sm="5" label-align-sm="right">
                 <b-form-select ref="destinoInputRef" id="destino" v-model="destinoInput" :options="destinoOptions"
-                    class="mb-2 mr-sm-2 mb-sm-0 form-control select-options" size="lg">
+                    class="form-control select-options" size="lg" :disabled="loadingData">
                     <template #first>
                         <b-form-select-option :value="null" disabled>Selecione o Destino</b-form-select-option>
                     </template>
                 </b-form-select>
             </b-form-group>
 
+            <!-- text input -->
             <b-form-group label="Peso" label-for="peso" label-cols-sm="5" label-align-sm="right">
                 <b-form-input ref="pesoInputRef" id="peso" v-model.number="pesoInput" type="number"
-                    placeholder="Peso da carga em kg"></b-form-input>
+                    placeholder="Peso da carga em kg" :disabled="loadingData"></b-form-input>
             </b-form-group>
 
+            <!-- analize button -->
             <b-col lg="4" sm="6" class="pb-2 analyze-button-container">
-                <layout-button v-b-modal.error-modal :click="findOptions" :disabled="loadingState"
+                <layout-button v-b-modal.error-modal :click="findOptions" :disabled="loadingState || loadingData"
                     text="Analisar"></layout-button>
             </b-col>
         </b-form-group>
@@ -64,6 +68,7 @@ export default ({
     computed: {
         ...mapGetters({
             loadingState: 'loadingState',
+            loadingData: 'loadingData',
             getClear: 'getClear'
         }),
 
@@ -170,4 +175,10 @@ export default ({
 .error-message p {
     padding: 0 18%;
 }
+
+.select-options {
+    margin-bottom: 20px;
+}
+
+.select-options option {}
 </style>

@@ -10,5 +10,8 @@ export default {
     },
     getClear(state) {
         return state.clear;
+    },
+    loadingData(state) {
+        return state.loadingData;
     }
 }

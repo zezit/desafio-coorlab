@@ -4,19 +4,22 @@
 
     <div class="content">
       <section class="app-body">
-        <b-container fluid class="bv-example-row cards-container">
-          <b-row>
-            <b-col class="search-container container" :sm="12" :md="12" :lg="4" :xl="4">
-              <search-section></search-section>
-            </b-col>
+        <div class="container d-flex justify-content-center align-items-center">
+          <b-container fluid class="bv-example-row cards-container">
+            <b-row>
 
-            <b-col class="options-container container" :sm="12" :md="12" :lg="8" :xl="8">
-              <shipment-options></shipment-options>
-            </b-col>
-          </b-row>
-        </b-container>
+              <b-col class="search-container container" :sm="12" :md="12" :lg="4" :xl="4">
+                <search-section></search-section>
+              </b-col>
+
+              <b-col class="options-container container" :sm="12" :md="12" :lg="8" :xl="8">
+                <shipment-options></shipment-options>
+              </b-col>
+
+            </b-row>
+          </b-container>
+        </div>
       </section>
-
     </div>
 
   </main>
@@ -45,7 +48,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      showErrorModal: 'showErrorModal'
+      showErrorModal: 'showErrorModal',
+      loadingData: 'loadingData'
     }),
   },
 
@@ -58,7 +62,9 @@ export default {
 
 <style scoped>
 .app-body,
-.cards-container {
+.cards-container,
+.content,
+main {
   height: 100%;
 }
 
@@ -74,6 +80,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  position: relative;
 }
 
 @media (max-width: 768px) {
