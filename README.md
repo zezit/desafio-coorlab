@@ -44,6 +44,7 @@ A aplicação é responsiva e oferece suporte para dispositivos móveis. Abaixo,
 <p align="center">
   <img src="./doc/mobile.gif" />
 </p>
+
 _________________________________________________________________________
 
 
