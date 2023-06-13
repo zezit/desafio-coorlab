@@ -79,6 +79,7 @@ export default {
 
 <style scoped>
 .cards-container {
+    width: 100%;
     margin: 10px;
     display: flex;
     flex-direction: row;
@@ -176,7 +177,7 @@ export default {
     }
 }
 
-@media (max-width: 315px) {
+@media (max-width: 442px) {
     .text {
         font-size: 0.8rem;
         display: flex;
@@ -184,6 +185,48 @@ export default {
     }
 
     h6 {
+        font-size: 0.7rem;
+    }
+
+    .card-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-color {
+        width: 80px;
+    }
+
+    .card-item {
+        max-height: 150px;
+    }
+
+    .icon img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bigger .text {
+        margin-left: 75px;
+    }
+
+    .bigger h6 {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .bigger span {
         font-size: 0.7rem;
     }
 
