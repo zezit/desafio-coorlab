@@ -1,25 +1,23 @@
 <template>
-    <transition name="show">
-        <div class="cards" v-if="selectedDestineOptions.length" key="save">
-            <div>
-                <h5>Estas são as melhores alternativas de frete que encontramos para você.</h5>
-            </div>
-
-            <card-layout cardType="first-row" :optionDetail="selectedDestineOptions[0]" />
-            <card-layout cardType="second-row" :optionDetail="selectedDestineOptions[1]" />
-
-            <div class="clear-button-container">
-                <layout-button v-b-modal.error-modal :click="clearAll" :disabled="false" class="clear-button"
-                    text="Limpar"></layout-button>
-            </div>
+    <div class="cards" v-if="selectedDestineOptions.length" key="save">
+        <div>
+            <h5>Estas são as melhores alternativas de frete que encontramos para você.</h5>
         </div>
 
-        <div v-else class="container">
-            <div class="no-data-container">
-                <h4>Nenhum dado selecionado</h4>
-            </div>
+        <card-layout cardType="first-row" :optionDetail="selectedDestineOptions[0]" />
+        <card-layout cardType="second-row" :optionDetail="selectedDestineOptions[1]" />
+
+        <div class="clear-button-container">
+            <layout-button v-b-modal.error-modal :click="clearAll" :disabled="false" class="clear-button"
+                text="Limpar"></layout-button>
         </div>
-    </transition>
+    </div>
+
+    <div v-else class="container">
+        <div class="no-data-container">
+            <h4>Nenhum dado selecionado</h4>
+        </div>
+    </div>
 </template>
   
 
@@ -43,6 +41,11 @@ export default ({
 
     methods: {
         clearAll() {
+            // go to the top of the page
+            if (window.innerWidth <= 991) {
+                const section = document.getElementsByClassName('title')[0];
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
             this.$store.dispatch('clearAll');
         }
     }
@@ -82,20 +85,18 @@ h5 {
     margin-top: 20px;
 }
 
-/* transition */
-.show-enter-active,
-.show-leave-active {
-    animation: enter 0.25s ease-in-out;
+.container,
+.cards {
+    transition: appear 0.5s ease-in-out;
 }
 
-.show-enter,
-.show-leave-to {
-    animation: enter 0.25s reverse;
-}
-
-@keyframes enter {
-    0% {
+@keyframes appear {
+    from {
         opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 

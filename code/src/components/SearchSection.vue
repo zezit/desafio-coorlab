@@ -24,7 +24,8 @@
             <!-- select -->
             <b-form-group label="Destino" label-for="destino" label-cols-sm="5" label-align-sm="right">
                 <b-form-select ref="destinoInputRef" id="destino" v-model="destinoInput" :options="destinoOptions"
-                    class="form-control select-options" size="lg" :disabled="loadingData">
+                    class="form-control select-options" size="lg" :disabled="loadingData"
+                    title="Choose one of the following...">
                     <template #first>
                         <b-form-select-option :value="null" disabled>Selecione o Destino</b-form-select-option>
                     </template>
@@ -105,6 +106,13 @@ export default ({
                     destino: this.destinoInput,
                     peso: this.pesoInput,
                 })
+
+                // go to the bottom of the page
+                if (window.innerWidth <= 991) {
+                    const section = document.getElementsByClassName('analyze-button-container')[0];
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+
                 return
             }
 

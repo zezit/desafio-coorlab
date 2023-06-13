@@ -4,9 +4,9 @@
 
     <div class="content">
       <section class="app-body">
-        <div class="container d-flex justify-content-center align-items-center">
-          <b-container fluid class="bv-example-row cards-container">
-            <b-row>
+        <div class="cards-container">
+          <b-container fluid class="bv-example-row d-flex justify-content-center align-items-center">
+            <b-row class="row">
 
               <b-col class="search-container container" :sm="12" :md="12" :lg="4" :xl="4">
                 <search-section></search-section>
@@ -68,10 +68,31 @@ main {
   height: 100%;
 }
 
+.app-body {
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 50px 20px 0 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.cards-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   min-height: 500px;
   height: 100%;
-  padding: 20px 10px;
+  padding: 0 20px;
 }
 
 .button-container {
@@ -82,11 +103,11 @@ main {
   justify-content: center;
 }
 
-.container {
-  position: relative;
+.row {
+  width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .bv-example-row .container {
     margin-bottom: 1rem;
   }
