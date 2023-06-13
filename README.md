@@ -52,7 +52,7 @@ _________________________________________________________________________
 
 Para executar a aplicação no Vercel, siga as instruções abaixo:
 
-A aplicação está disponível na plataforma Vercel e pode ser acessada através do seguinte link: [Link da Aplicação](https://desafio-coorlab-b08k5rjma-zezit.vercel.app/).
+A aplicação está disponível na plataforma Vercel e pode ser acessada através do seguinte link: [Link da Aplicação](https://desafio-coorlab.vercel.app/).
 
 Para obter os dados simulados da API, a aplicação faz uma requisição GET para a rota https://json-server-vercel-ten-psi.vercel.app/transport. É importante mencionar que podem ocorrer erros devido à instabilidade dos servidores.
 
@@ -63,8 +63,8 @@ A implementação utilizou os seguintes pacotes e versões:
 ```
 {
     Vue.js: 2.6.14
-    Vue Router: 3.5.2
-    Axios: 0.21.4
+    VueX: 3.6.2
+    Axios: 1.4.0
     Bootstrap: 5.1.3
     BootstrapVue: 2.22.0
 }
