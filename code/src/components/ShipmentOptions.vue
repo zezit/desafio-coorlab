@@ -110,4 +110,10 @@ h5 {
         width: 100%;
     }
 }
+
+@media (max-width: 540px) {
+    h5 {
+        text-align: center;
+    }
+}
 </style>

@@ -65,6 +65,7 @@ export default {
 .cards-container,
 .content,
 main {
+  width: 100%;
   height: 100%;
 }
 
@@ -110,6 +111,12 @@ main {
 @media (max-width: 991px) {
   .bv-example-row .container {
     margin-bottom: 1rem;
+  }
+}
+
+@media (max-width:445px) {
+  .content {
+    padding: 20px 0;
   }
 }
 </style>

@@ -187,4 +187,10 @@ export default ({
 .select-options {
     margin-bottom: 20px;
 }
+
+@media (max-width:445px) {
+    .error-message p {
+        padding: 0;
+    }
+}
 </style>

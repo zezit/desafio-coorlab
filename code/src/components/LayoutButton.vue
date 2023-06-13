@@ -36,4 +36,15 @@ button {
 button:hover {
     background-color: var(--main-backgroung-color-light);
 }
+
+button:focus {
+    outline: none;
+}
+
+@media (max-width: 400px) {
+    button {
+        max-width: 100%;
+
+    }
+}
 </style>
