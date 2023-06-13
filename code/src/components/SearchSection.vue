@@ -179,6 +179,4 @@ export default ({
 .select-options {
     margin-bottom: 20px;
 }
-
-.select-options option {}
 </style>

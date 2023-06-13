@@ -175,4 +175,17 @@ export default {
         margin-left: 100px;
     }
 }
+
+@media (max-width: 315px) {
+    .text {
+        font-size: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    h6 {
+        font-size: 0.7rem;
+    }
+
+}
 </style>
