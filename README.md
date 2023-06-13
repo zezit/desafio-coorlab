@@ -1,142 +1,70 @@
-# Desafio CoorLab
-Olá DEV, pronto para participar do nosso processo seletivo?
+# Implementação - Desafio CoorLab
 
-## Requisitos
-- Noções de programação web
-- Javascript
-- HTML
+O projeto consiste em uma aplicação web que permite ao analista de logística analisar e comparar as opções de frete disponíveis. O usuário pode inserir o peso do frete e a cidade de destino, e a aplicação exibirá o frete mais econômico e o frete mais rápido. A aplicação consome dados de uma API REST que disponibiliza as cotações de frete estruturadas.
 
-## Desafio
-Uma empresa estabelecida em Campinas busca assistência para determinar a opção de transportadora mais adequada, levando em consideração a cidade de destino e o prazo de entrega. A equipe de logística realiza o registro de todas as cotações de frete no sistema de gestão logística da empresa. Por sorte, esse sistema é equipado com uma API REST que disponibiliza de forma estruturada todos os dados coletados das cotações de frete. Tais informações estão formatadas da seguinte maneira:
+A implementação utiliza Vue.js como framework JavaScript, e outras bibliotecas e pacotes foram utilizados para a construção da aplicação. O ambiente de desenvolvimento é compatível com desktop e mobile, proporcionando uma experiência responsiva para os usuários.
 
+_________________________________________________________________________
+
+## Instruções para Execução Local
+
+Para executar o projeto localmente, siga as instruções abaixo:
+
+1. Certifique-se de estar na branch "master" do repositório.
+2. Clone este repositório em sua máquina local.
+3. Acesse o diretório raiz do projeto.
+4. Execute o comando para instalar as dependências do projeto:
 ```
-$ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET  http://localhost:3000/transport
-
-[
-  {
-    "id": 1,                                   <--- ID da cotação
-    "name": "Expresso Oriente",                <--- Nome da transportadora
-    "cost_transport_light": "R$ 2.10",         <--- Custo de Frete até 100Kg [R$/Kg]
-    "cost_transport_heavy": "R$ 1.50",         <--- Custo de Frete mais de 100Kg [R$/Kg]
-    "city": "São Paulo",                       <--- Cidade de destino
-    "lead_time": "12h"                         <--- Tempo de entrega
-  },
-]
-```
-
-Implemente uma aplicação utilizando Vue.js e JavaScript, com base nos requisitos descritos na história a seguir:
-
-
-**História de Usuário: Análise de Frete**
-
-Como analista de logística,
-Eu desejo saber qual é o preço do frete mais econômico e o preço do frete mais rápido,
-Para tomar decisões mais assertivas ao contratar o serviço de transporte.
-
-
-**Cenário: Exibição dos Melhores Fretes**
-
-Dado que estou na página de análise de frete,
-Quando inserir o peso do frete,
-E informar a cidade de destino,
-E clicar no botão "Analisar",
-Então devo visualizar o nome da transportadora, o custo total e o tempo de entrega do frete mais econômico,
-E devo visualizar o nome da transportadora, o custo total e o tempo de entrega do frete mais rápido.
-
-
-**Protótipo**
-
-![alt text](./doc/prototype.gif "Protótipo")
-
-
-A implementação da aplicação deve utilizar Vue.js e deve seguir os requisitos da história de usuário, cenário e protótipo.
-Do ponto de vista de tecnologia utilizada para implementação, a unica exigência é utilizar Vue.js, outras bibliotecas, componentes e frameworks, podem ser utilizados, desde que sejam de código-aberto.
-
-
-## Instruções para Implementação
-
-Para facilitar a resolução do desafio, deixamos uma parte do projeto já montado para você. No diretório "code" deste repositório você terá o esqueleto do projeto já montado.
-
-Utilize os seguintes comandos para rodar a página do desafio.
-
-```
-cd code
-
 npm install
-
-npm run serve
 ```
-Você também vai precisar ligar o servidor da API REST para consultar as cotações dos fretes, utilize o seguinte comando para isso:
-
+5. Execute o comando para ligar o servidor da API REST:
 ```
 npm run api_serve
+```
+6. Execute o comando para iniciar o servidor de desenvolvimento:
+```
+npm run serve
+```
+7. Acesse `http://localhost:8080` no seu navegador para visualizar a aplicação.
+
+_________________________________________________________________________
+
+## Ambiente Desktop
+
+A aplicação foi projetada para oferecer uma experiência completa em dispositivos desktop. Abaixo, esta o GIF que demonstra o funcionamento da aplicação no ambiente desktop:
+
+<p align="center">
+  <img src="./doc/desktop.gif" />
+</p>
+
+## Ambiente Mobile
+
+A aplicação é responsiva e oferece suporte para dispositivos móveis. Abaixo, esta o GIF que mostram o funcionamento da aplicação no ambiente mobile:
+
+<p align="center">
+  <img src="./doc/mobile.gif" />
+</p>
+_________________________________________________________________________
+
+
+## Instruções para Execução no Vercel
+
+Para executar a aplicação no Vercel, siga as instruções abaixo:
+
+A aplicação está disponível na plataforma Vercel e pode ser acessada através do seguinte link: [Link da Aplicação](https://desafio-coorlab-b08k5rjma-zezit.vercel.app/).
+
+Para obter os dados simulados da API, a aplicação faz uma requisição GET para a rota https://json-server-vercel-ten-psi.vercel.app/transport. É importante mencionar que podem ocorrer erros devido à instabilidade dos servidores.
+
+## Pacotes e Versões Utilizadas
+
+A implementação utilizou os seguintes pacotes e versões:
 
 ```
-
-Para testar a api, você pode usar o seguinte comando:
+{
+    Vue.js: 2.6.14
+    Vue Router: 3.5.2
+    Axios: 0.21.4
+    Bootstrap: 5.1.3
+    BootstrapVue: 2.22.0
+}
 ```
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET  http://localhost:3000/transport
-```
-
-Ele ira retornar uma lista com os valores das cotações, como  exemplo a seguir:
-```
-$ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET  http://localhost:3000/transport
-
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Vary: Origin, Accept-Encoding
-Access-Control-Allow-Credentials: true
-Cache-Control: no-cache
-Pragma: no-cache
-Expires: -1
-X-Content-Type-Options: nosniff
-Content-Type: application/json; charset=utf-8
-Content-Length: 2837
-ETag: W/"b15-f90GSZPs+txwiOzSSKLWg7LqzzE"
-Date: Wed, 27 Apr 2022 23:55:34 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-[
-  {
-    "id": 1,
-    "name": "Expresso Oriente",
-    "cost_transport_light": "R$ 2.10",
-    "cost_transport_heavy": "R$ 1.50",
-    "city": "São Paulo",
-    "lead_time": "12h"
-  },
-  {
-    "id": 2,
-    "name": "Expresso Oriente",
-    "cost_transport_light": "R$ 4.20",
-    "cost_transport_heavy": "R$ 3.10",
-    "city": "Belo Horizonte",
-    "lead_time": "18h"
-  },
-]
-```
-
-## Avaliação
-O que vamos avaliar:
-- Atenção aos requisitos do projeto.
-- Atenção as instruções que fornecemos.
-- Lógica.
-- Qualidade.
-- Manutenabilidade.
-- Organização.
-- Boas práticas.
-
-## Instruções
-Siga os seguintes passos para a execução do desafio:
-1. Crie um repositório **público** no GitHub.
-2. Faça o **clone** do repositório que você acabou de criar.
-3. Extraia os arquivos do "desafio_coorlab.zip" na pasta que você fez o clone do repostório.
-4. Faça o primeiro **commit** com apenas estes arquivos no seu repositório, desta forma fica mais simples avaliar o que você implementou.
-5. Implemente o desafio.
-6. Faça o **commit** da sua implementação, inclusive se você quiser criar um commit diferente para cada parte que você implementou, é uma pratica que gostamos muito aqui na Coordene.
-7. Faça o **push** das suas alterações.
-8. Após concluir os passos anteriores, preencha este [formulário](https://airtable.com/shrTjtwUrw7I1CuxE).
-
-### Importante
-- Não se esqueça de deixar o seu ***repositório público*** para que possamos revisar o seu código.
